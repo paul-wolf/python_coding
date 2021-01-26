@@ -242,7 +242,7 @@ type, like one of these:
 
 In particular don't use dicts as enumeration types:
 
-```
+```python
 STATUS = {
     "READY": 0,
     "IN_PROGRESS": 1,
@@ -252,7 +252,7 @@ STATUS = {
 
 Use an Enum for this:
 
-```
+```python
 from enum import Enum
 class Status(Enum):
     READY = 0
@@ -358,7 +358,7 @@ Library) functions work like `sorted()` vs `list.sort()`.
 But if you can, don't change the passed value. Return a new instance
 of an immutable type:
 
-```
+```python
 from typing import Tuple
 from collections.abc import Sequence
 import random
@@ -394,7 +394,7 @@ Sticking to typical idioms in Python helps others read your code.
 
 You could do this:
 
-```
+```python
 def foo(default_list=None):
     if not default_list: 
         default_list = list()
@@ -403,7 +403,7 @@ def foo(default_list=None):
 
 This is better, more idiomatic python:
 
-```
+```python
 def foo(default_list=None):
     default_list = default_list or list() 
     ...
@@ -411,7 +411,7 @@ def foo(default_list=None):
 
 What you should not do:
 
-```
+```python
 # BAD
 def foo(default_list=None):
     if not default_list: default_list = list()
@@ -422,32 +422,36 @@ It will work, but there is an idomatic way that is more expected.
 
 If you need to change the value you'll need to use the more verbose conditional form:
 
-```
+```python
 # we want an int that is not zero or else None
 user_id = int(user_id) if user_id else None
 ```
 
 If `foo()` requires a list:
 
-```
+```python
 def foo(default_list: List):
     ...
 ```
 
 You could call it like this if you think `my_list` might be `None`:
 
-```
+```python
 foo(my_list or list())
 ```
 
 This is a bit funny because both terms in the expression evaluate to False in a conditional context. It's common with many programming languages as an optimisation: stop evaluating as soon as the expression value is determined.
 
-    None or list()
+```python
+None or list()
+```
 
 will get you an empty list
 
-    list() or None
-    
+```python
+list() or None
+```
+
 will result in None. 
 
 Don't gloss over this feature of Python. https://docs.python.org/3/reference/expressions.html#boolean-operations
@@ -467,7 +471,7 @@ for line in file:
 
 Compared to:
 
-```
+```python
 max(len(line) for line in file if line.strip())
 ```
 
@@ -514,7 +518,7 @@ comprehensions:
 Here's a hard-to-read prime number check function with *three*
 `return` statements that can be found frequently in the web:
 
-```
+```python
 def is_prime(x):
     if x >= 2:
         for y in range(2, x):
@@ -527,7 +531,7 @@ def is_prime(x):
 
 Compared to one that is pythonic, easy to read and more correct:
 
-```
+```python
 def is_prime(n: int) -> bool:
     return all(n % i for i in range(2, n))
 ```
@@ -542,11 +546,15 @@ Gettting a tuple from a comprehesion is not quite consistent with
 other forms like dict and list comprehensions. You might think the
 following is a tuple comprehension:
 
-    e = (_ for _ in range(10))
+```python
+e = (_ for _ in range(10))
+```
 
 But `e` is now a generator expression. Use this if you want a tuple right away:
 
-    e = tuple(_ for _ in range(10))
+```python
+e = tuple(_ for _ in range(10))
+```
 
 There are going to be times when you want to return a generator and
 not a tuple, like when the underlying data is large and requires
@@ -560,7 +568,7 @@ possible or the merge `|` and update `|=` operators (from Python 3.9).
 Most python developers know not to use a mutable default value in a
 function parameter declaration:
 
-```
+```python
 # BAD
 def foo(my_list=[]):
     ...
@@ -571,7 +579,7 @@ While this does not result in catastrophe every time, you always want
 logic in the function body. Also, when initialising in the body, use a
 callable instead of an empty list (`[]`):
 
-```
+```python
 my_list = list()
 ```
 
@@ -608,33 +616,33 @@ Avoid passing these variables as parameters any more than necessary to
 other functions. If you need to give, for instance, the user object of
 a Request to a subroutine, do not do this:
 
-```
+```python
 # BAD
 permissions = get_permissions(request)
 ```
 
 Better: 
 
-```
+```python
 permissions = get_permissions(request.user)
 ```
 
 Best:
 
-```
+```python
 permissions = get_permissions(request.user.id)
 ```
 
 Likewise: 
 
-```
+```python
 # BAD
 formatted = format_message(queue)
 ```
 
 Better:
 
-```
+```python
 formatted = format_message(queue.pop())
 ```
 
@@ -750,7 +758,7 @@ the class is because that will help you concentrate on the purpose of
 the class and subclasses. If you have a "Fish" hierarchy, you would
 not say
 
-```
+```python
 BaseFish
     FinFish
     ShellFish
@@ -768,7 +776,7 @@ harder to maintain than composition.
 In this highly simplistic example, the subclass is using the
 superclass as a utility for acquiring state:
 
-```
+```python
 import urllib
 class Fish:
     def __init__(self, url):
@@ -787,7 +795,7 @@ class Mollusc(Fish):
 We can change this to delegate state acquisition to an object
 dedicated to that function:
 
-```
+```python
 import urllib
 
 class Fish:
@@ -895,7 +903,7 @@ like overkill to also type hint it with `Final`. But using the type
 hint `Final` when assigning class instance variables is incredibly
 useful.
 
-```
+```python
 class Fish:
     def __init__(self, base_url):
         self.base_url: Final = base_url # good to know!
@@ -912,14 +920,14 @@ probably still better to define them in a `constants.py` file.
 
 Often, you start with a reasonably simple initialisation:
 
-```
+```python
 def __init__(self, name):
     ...
 ```
 
 and later, it gets more complicated:
 
-```
+```python
 def __init__(self, name, street, postcode, town, country):
     ...
 ```
@@ -930,7 +938,7 @@ to find out which variables get changed and when. It significantly
 degrades scanability of your code. It is better to use a Context Parameter
 variable:
 
-```
+```python
 class Person:
    name
    street
@@ -941,13 +949,13 @@ class Person:
 
 Now we initialise the class like this: 
 
-```
+```python
 m = SnailMail(Person(data))
 ```
 
 Or, even better, create it with a factory function or class. 
 
-```
+```python
 m = snail_mail_factory(person=None):
     return SnailMail(person or Person())
 ```
@@ -997,7 +1005,9 @@ aware if some developer is using a different convention.
 Stop using dicts as parameters. Use instead `dataclasses`. 
 The `dict.get()` method is a source of bugs:
 
-    float(order.get(“price", 0)) 
+```python
+float(order.get(“price", 0)) 
+```
 
 If the "price" key is not present, the value of this expression is
 0.0. All good. The developer thinks all bases are covered. They are
@@ -1006,8 +1016,9 @@ throw an exception. The solution is to parse and validate your
 input. PyDantic will parse for you. Dataclasses validate. If you
 wanted to use a dict nevertheless you are probably looking for this:
 
-    float(order.get(“price") or 0)
-    
+```python
+float(order.get(“price") or 0)
+```
 
 ## Comments and naming
 
@@ -1015,7 +1026,9 @@ The trend is towards fewer comments based on the assumption that other
 factors contribute to telling the reader what is going on. Especially
 eschew obvious comments. If you want to drive someone crazy do this:
 
-```class Address:
+```python
+# Bad
+class Address:
     """This class represents an address."""
     ...
 ```
@@ -1033,7 +1046,7 @@ useful information.
 Name variables in a more descriptive way the further they are used
 from their first use. If you are looping and using an index:
 
-```
+```python
 for i, name in enumerate(my_list_of_names):
     ...
 ```
@@ -1042,7 +1055,7 @@ for i, name in enumerate(my_list_of_names):
 are more lines of code, you'd be better off doing something like
 this:
 
-```
+```python
 for name_index, name in enumerate(my_list_of_names):
     ...
 ```
@@ -1050,7 +1063,7 @@ for name_index, name in enumerate(my_list_of_names):
 Type hints are a better form of documentation. The convention for a
 function docstring is something like:
 
-```
+```python
 def splice_name(first, last):
     """Return a str representing fullname."""
     return "f{first} {last}"
@@ -1058,7 +1071,7 @@ def splice_name(first, last):
 
 But now you can write:
 
-```
+```python
 def splice_name(first, last) -> str:
     """Combine first and last with space inbetween."""
     return "f{first} {last}"
@@ -1072,7 +1085,7 @@ a type hint for this purpose.
 Now look what happens in iPython if I press `return` using `?` after
 the function name:
 
-```
+```python
 In [29]: splice_name?
 Signature: splice_name(first, last) -> str
 Docstring: Combine first and last with space inbetween.
