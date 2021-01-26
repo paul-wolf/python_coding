@@ -202,7 +202,7 @@ One thing you should definitely not do is use type hints and then
 never run `mypy`. Why? Because your type hints will be wrong. This is
 wrong:
 
-```
+```python
 def foo(a) -> str:
     try:
         return bar(a)
