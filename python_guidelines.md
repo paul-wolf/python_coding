@@ -1,3 +1,5 @@
+## Python Coding Guidelines
+
 This is a set of guidelines to make Python code more readable, easier
 to maintain and easier to reuse.
 
@@ -45,9 +47,9 @@ that can be managed, changed and fixed more easily.
 
 Every Python developer should be competent with these tools:
 
-*[ipython](https://ipython.org/ "ipython"): This is the standard [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "repl") these days
+* [ipython](https://ipython.org/ "ipython"): This is the standard [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "repl") these days
 
-*  [Jupyter Notebooks](https://jupyter.org/ "Jupyter Notebooks"): a notebook that uses iPython at its core
+* [Jupyter Notebooks](https://jupyter.org/ "Jupyter Notebooks"): a notebook that uses iPython at its core
 
 * [ipdb](https://github.com/gotcha/ipdb "ipdb"): the command line debugger of iPython or some pdb variant.
 
