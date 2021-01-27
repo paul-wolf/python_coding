@@ -16,12 +16,13 @@ reviews. This is not an authoritative set of prescriptions. It's a
 starting point for developing your own set of guidelines. Discard or
 modify practices as you see fit.
 
+[checklist](https://github.com/paul-wolf/python_coding/blob/main/code_review_checklist.md "checklist")
+
 You'll need to be familiar with Python to some extent since we
 won't explain basics of the language. But there are helpful references
 in the appendix especially for common design patterns. If you are
 not familiar with some parts of Python like how modules and packages
-work, you'll need to read up in the Python Standard Library
-documentation (https://docs.python.org).
+work, you'll need to read up in the [Python Standard Library documentation](https://docs.python.org).
 
 Most of this material is applicable to most Python versions but we
 assume a more or less current version like 3.7 or even higher.
@@ -45,11 +46,11 @@ that can be managed, changed and fixed more easily.
 
 Every Python developer should be competent with these tools:
 
-* iPython: This is the standard repl (https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) these days
+*[ipython](https://ipython.org/ "ipython"): This is the standard [repl](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "repl") these days
 
-* Jupyter Notebooks https://jupyter.org/: a notebook that uses iPython at its core
+*  [Jupyter Notebooks](https://jupyter.org/ "Jupyter Notebooks"): a notebook that uses iPython at its core
 
-* ipdb https://github.com/gotcha/ipdb: the command line debugger of iPython or some pdb variant.
+* [ipdb](https://github.com/gotcha/ipdb "ipdb"): the command line debugger of iPython or some pdb variant.
 
 
 It should be easy - very easy - to load code into each of these tools
@@ -1200,96 +1201,5 @@ Use the associated code review checklist as a starting point. Modify
 it as you research and gather experience.
 
 
-## Appendices
-
-Mypy http://mypy-lang.org/ is the reference implementation for type
-hint checking (linting). Remember, type hints have no influence at all
-on runtime.
-
-Pytype: https://github.com/google/pytype
-Pyright: https://github.com/microsoft/pyright
-Pyre: https://pyre-check.org/
-
-Debuggers
-
-Most Python devs use an IDE like PyCharm or VSCode. Entry
-points for debugging are easy to set up. If you use those or
-any other tool, you still want to be able to load code into pdb or one
-of its variants:
-
-* pdb is the standard debugger for Python. It's part of the PSL. You
-want to be familiar with basic workings of this tool. But like the
-default Python repl, it is awkward. Use ipdb instead which uses
-iPython.
-
-* ipdb https://github.com/gotcha/ipdb lets you access ipython
-  features. It is generally a better experience than using pdb
-  directly.
-
-* pudb is a curses based debugger and might be more friendly but won't
-always work as reliably as ipdb. https://github.com/inducer/pudb
-
-Repls
-
-iPython http://ipython.org/ is the standard repl in practice for Python. 
-
-Notebooks: jupyter https://jupyter.org/ is a web application wrapper
-around iPython. Jupyter notebooks have revolutionised Python
-development by allowing much easier sharing of programming knowledge,
-saving your code experiments in an easier to access form and
-especially scientific and numerical applications.
-
-
-
-Functional Programming
-
-Design Patterns in Python
-
-Software complexity
-
-https://www.goodreads.com/book/show/39996759-a-philosophy-of-software-design
-
-## References
-
-[Brandon Rhodes' guide to design patterns](https://python-patterns.guide/)
-
-<https://refactoring.guru/design-patterns/factory-method/python/>
-
-<https://realpython.com/inheritance-composition-python/#what-are-inheritance-and-composition>
-
-https://stackoverflow.com/questions/26027694/correct-style-for-python-functions-that-mutate-the-argument
-
-https://en.wikipedia.org/wiki/Fluent_interface
-
-https://en.wikipedia.org/wiki/Method_chaining
-
-https://en.wikipedia.org/wiki/Method_cascading
-
-https://mail.python.org/pipermail/python-dev/2003-October/038855.html
-
-
-https://stackoverflow.com/questions/4114167/checking-if-a-number-is-a-prime-number-in-python
-
-https://www.pythonkitchen.com/legally-free-python-books-list/
-
-https://www.oreilly.com/programming/free/files/functional-programming-python.pdf
-
-https://www.oreilly.com/programming/free/files/how-to-make-mistakes-in-python.pdf
-
-
-https://opensource.com/article/20/5/duck-typing-python
-
-https://treyhunner.com/2019/03/abusing-and-overusing-list-comprehensions-in-python/
-
-Bad prime number detection
-
-https://linuxconfig.org/function-to-check-for-a-prime-number-with-python
-
-
-
-https://towardsdatascience.com/simplify-your-python-code-automating-code-complexity-analysis-with-wily-5c1e90c9a485
-
-
-https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.6535&rep=rep1&type=pdf
-
+[The code review checklist.](https://github.com/paul-wolf/python_coding/blob/main/code_review_checklist.md "checklist")
 
