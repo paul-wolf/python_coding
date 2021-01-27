@@ -1,6 +1,5 @@
-This is a set of guidelines for adopting systematic programming practices
-within a development team to make Python code more readable, easier to
-maintain and easier to reuse.
+This is a set of guidelines to make Python code more readable, easier
+to maintain and easier to reuse.
 
 The concentration is on sound coding rather than big issues around
 architecture. We don't pay much attention to how to make code
@@ -16,7 +15,7 @@ reviews. This is not an authoritative set of prescriptions. It's a
 starting point for developing your own set of guidelines. Discard or
 modify practices as you see fit.
 
-[checklist](https://github.com/paul-wolf/python_coding/blob/main/code_review_checklist.md "checklist")
+[The checklist](https://github.com/paul-wolf/python_coding/blob/main/code_review_checklist.md "checklist")
 
 You'll need to be familiar with Python to some extent since we
 won't explain basics of the language. But there are helpful references
