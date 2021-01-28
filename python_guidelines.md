@@ -360,8 +360,7 @@ But if you can, don't change the passed value. Return a new instance
 of an immutable type:
 
 ```python
-from typing import Tuple
-from collections.abc import Sequence
+from typing import Tuple, Sequence
 import random
 
 def remove_odd(data: Sequence[int]) -> Tuple[int]:
