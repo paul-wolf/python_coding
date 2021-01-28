@@ -92,13 +92,10 @@ The most important improvement you will ever achieve in your code is
 being clear about changing the state of your data. This affects the
 ability to reuse code and avoid bugs more than any other factor. 
 
-The functional paradigm is useful here. Implement functions without
-side-effects as far as possible. Give data via parameters to a
-function and get data back via return values.
-
-https://docs.python.org/3/howto/functional.html
-
-https://stackabuse.com/functional-programming-in-python/
+The [functional](https://docs.python.org/3/howto/functional.html)
+paradigm is useful here. Implement functions without side-effects as
+far as possible. Give data via parameters to a function and get data
+back via return values.
 
 Most applications need to have side-effects like sending messages,
 writing to databases, etc. But strive to understand where to use these
@@ -107,13 +104,14 @@ framework or data storage framework.  A web view function can and
 should call data storage apis. Just don't pass the objects that
 represent these APIs any more than required to other functions.
 
-Python is not a functional programming language but you can apply
-functional programming principles to a useful extent. Much of what
-follows is about state management, the key to readable code, reuse and
-reducing errors in software. While functional purity is relatively
-easy to grasp for most developers, designing classes often causes good
-intentions to crumble. We present a set of guideines below to deal
-with class design complexity.
+Python is not a [functional programming
+language](https://stackabuse.com/functional-programming-in-python/)
+but you can apply functional programming principles to a useful
+extent. Much of what follows is about state management, the key to
+readable code, reuse and reducing errors in software. While functional
+purity is relatively easy to grasp for most developers, designing
+classes often causes good intentions to crumble. We present a set of
+guideines below to deal with class design complexity.
 
 In the following, I prescribe various practices, not always with
 detailed explanations as to why. The preference is for conveying a set
@@ -154,13 +152,13 @@ Some popular tools provide the best indication of things to fix or
 even fix things automatically on your behalf. This is the easy
 part. Run these tools always before pushing code:
 
-* `black` [https://github.com/psf/black]: you run this and agree that
+* [`black`](https://github.com/psf/black): you run this and agree that
   everyone in the team follows the style laid down by `black`. It is
   the basis for applying other tools mentioned below. Always run this
   first because it will fix a ton of things that would otherwise be
   flagged by `flake8`.
 
-* `flake8` [https://flake8.pycqa.org/en/latest/]: This tool wraps
+* [`flake8`](https://flake8.pycqa.org/en/latest/): This tool wraps
   three other tools. The best thing about it is the defaults are
   immediately useful. Run this and fix *every* raised issue. You can
   configure it to skip some checks but mostly skipping checks is
@@ -176,23 +174,24 @@ massive improvement after fixing issues identified by
 
 Other tools you should consider:
 
-* `mypy`: this tool will find bugs but also forces you to not do
-  things that work but which are bad practices, like having functions
-  that return unexpected types. But it also improves readability
-  massively, IMHO. Fix *everything* flagged by `mypy`. `mypy` is
-  useless unless you use type hints in your code. While there is
-  vigorous debate about the benefits of type hints, I personally find
-  them unquestionably useful when used appropriately. If you have no
-  type hints, running `mypy` will find no problems. If you have type
-  hints but never run `mypy` (or one of the other type checkers), you
-  will find many problems upon finally doing so. Better to run it
-  consistently after adding your first type hint. Fix every raised
-  issue.
+* [`mypy`](http://mypy-lang.org/): this tool will find bugs but also
+  forces you to not do things that work but which are bad practices,
+  like having functions that return unexpected types. But it also
+  improves readability massively, IMHO. Fix *everything* flagged by
+  `mypy`. `mypy` is useless unless you use type hints in your
+  code. While there is vigorous debate about the benefits of type
+  hints, I personally find them unquestionably useful when used
+  appropriately. If you have no type hints, running `mypy` will find
+  no problems. If you have type hints but never run `mypy` (or one of
+  the other type checkers), you will find many problems upon finally
+  doing so. Better to run it consistently after adding your first type
+  hint. Fix every raised issue.
 
-* `pylint`: This is a great tool and should be used on any significant
-  project. But configuration is non-trivial. At first you will get
-  more out of `flake8` plus `mypy`. You can start using `pylint` and
-  gradually build a configuration that works for you. 
+* [`pylint`](https://www.pylint.org/): This is a great tool and should
+  be used on any significant project. But configuration is
+  non-trivial. At first you will get more out of `flake8` plus
+  `mypy`. You can start using `pylint` and gradually build a
+  configuration that works for you.
 
 You'll notice, I don't talk about line length or how to format
 comprehensions or imports or other style issues. That's because you
@@ -238,9 +237,9 @@ Use immutable types whenever you can:
 Make sure you are not using dicts when you should be using another
 type, like one of these:
 
-* namedtuple https://docs.python.org/3/library/collections.html#collections.namedtuple
-* datasets https://docs.python.org/3/library/dataclasses.html 
-* Enum https://docs.python.org/3/library/enum.html
+* [namedtuple](https://docs.python.org/3/library/collections.html#collections.namedtuple)
+* [datasets](https://docs.python.org/3/library/dataclasses.html)
+* [Enum](https://docs.python.org/3/library/enum.html)
 
 In particular don't use dicts as enumeration types:
 
@@ -442,7 +441,8 @@ You could call it like this if you think `my_list` might be `None`:
 foo(my_list or list())
 ```
 
-This is a bit funny because both terms in the expression evaluate to False in a conditional context. It's common with many programming languages as an optimisation: stop evaluating as soon as the expression value is determined.
+It's common with many programming languages as an optimisation: stop
+evaluating as soon as the expression value is determined.
 
 ```python
 None or list()
@@ -456,7 +456,7 @@ list() or None
 
 will result in None. 
 
-Don't gloss over this feature of Python. https://docs.python.org/3/reference/expressions.html#boolean-operations
+Don't gloss over [this feature of Python](https://docs.python.org/3/reference/expressions.html#boolean-operations).
 
 ## Iterating
 
@@ -506,16 +506,15 @@ critical to our ability to mentally scan past that code when looking
 for state changes.
 
 List comprehensions and higher order functions, `filter()`, `map()`,
-`reduce()`, etc., do nearly the same thing. Don't worry about
-this. Use list comprehensions by preference but don't worry if you prefer
-the higher order functions.
+`reduce()`, etc., do nearly the same thing. Use list comprehensions by
+preference but don't worry if you prefer the higher order functions.
 
 Functions you probably want to use that are not easily replaced with
 comprehensions:
 
-* `zip()` https://docs.python.org/3/library/functions.html#all 
-* `all()` https://docs.python.org/3/library/functions.html#all
-* `any()`https://docs.python.org/3/library/functions.html#any
+* [`zip()`](https://docs.python.org/3/library/functions.html#all)
+* [`all()`](https://docs.python.org/3/library/functions.html#all)
+* [`any()`](https://docs.python.org/3/library/functions.html#any)
 
 Here's a hard-to-read prime number check function with *three*
 `return` statements that can be found frequently in the web:
@@ -1013,10 +1012,11 @@ float(order.get(“price", 0))
 
 If the "price" key is not present, the value of this expression is
 0.0. All good. The developer thinks all bases are covered. They are
-not. When the key is present but has a value of `None` this will
-throw an exception. The solution is to parse and validate your
-input. PyDantic will parse for you. Dataclasses validate. If you
-wanted to use a dict nevertheless you are probably looking for this:
+not. When the key is present but has a value of `None` this will throw
+an exception. The solution is to parse and validate your
+input. [PyDantic](https://pydantic-docs.helpmanual.io/) will parse for
+you. Dataclasses validate. If you wanted to use a dict nevertheless
+you are probably looking for this:
 
 ```python
 float(order.get(“price") or 0)
@@ -1179,7 +1179,7 @@ write unit tests.
 When you refactor functions to satisfy complexity thresholds, you are
 making writing unit tests easier.
 
-Also, you should very probably be using hypothesis: https://hypothesis.readthedocs.io/. 
+Also, you should very probably be using [Hypothesis](https://hypothesis.readthedocs.io/).
 
 ## Summary
 
