@@ -2,7 +2,7 @@
 
 This has two principle documents: 
 
-* Python guidlines article that discussed good coding practice
+* Python guidelines article that discusses good coding practice
 
 * A companion checklist for code reviews
 
