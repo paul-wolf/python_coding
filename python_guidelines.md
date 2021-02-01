@@ -9,7 +9,7 @@ faster. We're more interested in the process of efficient code
 production and code maintenance. Writing idiomatic Python is a
 sound basis for efficient code.
 
-If you struggle with too many bugs and maintanance problems in your
+If you struggle with too many bugs and maintenance problems in your
 project, applying the following recommendations might have a big
 positive effect. The intent is to bring together many well-known good
 practices in a checklist form to provide a toolkit for code
@@ -511,7 +511,7 @@ preference but don't worry if you prefer the higher order functions.
 Functions you probably want to use that are not easily replaced with
 comprehensions:
 
-* [`zip()`](https://docs.python.org/3/library/functions.html#all)
+* [`zip()`](https://docs.python.org/3/library/functions.html#zip)
 * [`all()`](https://docs.python.org/3/library/functions.html#all)
 * [`any()`](https://docs.python.org/3/library/functions.html#any)
 
@@ -542,7 +542,7 @@ through sequences without using the resulting sequence or collection
 (list, dict, etc.). If you only want the side effects of such an
 operation, use a `for` loop.
 
-Gettting a tuple from a comprehesion is not quite consistent with
+Gettting a tuple from a comprehension is not quite consistent with
 other forms like dict and list comprehensions. You might think the
 following is a tuple comprehension:
 
@@ -652,10 +652,13 @@ object, these change the state of the `body` attribute. If you pass
 `request` to a function, a reader of that function will not be able to
 assume the state of the object. It is also much more difficult to
 construct test instances of a `Request` object than to construct a user
-object. You can experiment with calls to `get_permissions()` and
-`format_message()` more easily in a repl. You can also use them in a
-context that doesn't require a request at all like if you are
-building a command line interface to these functions.
+object. 
+
+Without the context dependent variable you can experiment with calls 
+to `get_permissions()` and `format_message()` more easily in a repl. 
+You can also use them in a context that doesn't require a request at 
+all like if you are building a command line interface to these 
+functions.
 
 Below we discuss the Context Parameter class pattern. This is a simple
 data class, in the sense of the PSL `dataclasses` module. This is
@@ -988,7 +991,7 @@ service provider or utility for subclasses.
 * Factory: A class or module level function that creates appropriate
   DomainManager subclass and injecting the appropriate RemoteClient
 
-Then only the DomainManger gets subclassed for specific kinds of
+Then only the DomainManager gets subclassed for specific kinds of
 data. If you need to parameterise any of these with complex set of
 data, use a Context Parameter class.
 
@@ -1067,7 +1070,7 @@ function docstring is something like:
 ```python
 def splice_name(first, last):
     """Return a str representing fullname."""
-    return "f{first} {last}"
+    return f"{first} {last}"
 ```
 
 But now you can write:
@@ -1075,7 +1078,7 @@ But now you can write:
 ```python
 def splice_name(first, last) -> str:
     """Combine first and last with space inbetween."""
-    return "f{first} {last}"
+    return f"{first} {last}"
 ```
 
 Add more type annotations as necessary. Add a docstring unless it is
@@ -1094,7 +1097,7 @@ File:      ~/prj/<ipython-input-28-b0b71e899c5a>
 Type:      function
 ```
 
-Likeise if you type `help(splice_name)`. This is amazingly useful. 
+Likewise if you type `help(splice_name)`. This is amazingly useful. 
 
 ## Web Frameworks
 
@@ -1120,12 +1123,11 @@ of your code is data. The view function passes data to other parts of
 your application and gets data back. Passing a user id (int) is better
 than passing a User object. But if the called code will immediately
 again use that to query the database for user information, you now
-have an unnecessary call to the database. But maybe you have the data
-already, so pass that (company id?), but not in the form of a
-context-dependent variable that may have side effects and couples
-lower layers to the web framework. There are various options here but
-most importantly, you want to divest your function calls of couplings
-to your ORM or web framework.
+have an unnecessary call to the database. If you have the data already
+pass that, but not in the form of a context-dependent variable that 
+may have side effects and couples lower layers to the web framework. 
+There are various options here but most importantly, you want to 
+divest your function calls of couplings to your ORM or web framework.
 
 If you end up passing the Request or ORM objects throughout your own
 code, far downstream, it will have dire consequences for readability
