@@ -344,11 +344,10 @@ and later, it gets more complicated:
    def __init__(self, name, street, postcode, town, country):
        ...
 
-You then end up having many class instance variables that you have to
-manage. This causes a reader to have to scan the code more intensively
-to find out which variables get changed and when. It significantly
-degrades scanability of your code. It is better to use a Context
-Parameter variable:
+You then end up having many class instance variables that you have to manage.
+This causes a reader to have to scan the code more intensively to find out which
+variables get changed and when. It significantly degrades scanability of your
+code. It is better to use a Parameter Consolidation variable:
 
 .. code:: python
 

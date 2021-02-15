@@ -32,6 +32,7 @@ assume a more or less current version like 3.7 or even higher.
    :maxdepth: 1
    :caption: Contents:
 
+   tools
    python_guidelines
    context_dependent_variables
    class_design
