@@ -720,6 +720,12 @@ that the subroutines should be callable by non-view code. They should be
 easy to setup, easy to load in ipdb and ipython and require as few
 imports as possible.
 
+If you are tempted to implement abstractions that support the Dependency
+Inversion Principle (DIP), be mindful that this can be hard to do when many web
+frameworks ensure tight coupling between high-level modules (your domain
+entitites and rules) and low level modules like the persistence layer. Fighting
+against this to achieve a Clean Architecure can have a high cost. 
+
 Profiling code
 --------------
 

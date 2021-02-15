@@ -1,4 +1,4 @@
-Context dependent variables
+Context Dependent Variables
 ===========================
 
 These variables are complex, like classes that manage some state in a
