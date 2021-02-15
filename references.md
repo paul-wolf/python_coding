@@ -1,7 +1,7 @@
 ## References
 
 Mypy http://mypy-lang.org/ is the reference implementation for type
-hint checking (linting). Remember, type hints have no influence at all
+hint checking. Remember, type hints have no influence at all
 on runtime.
 
 Pytype: https://github.com/google/pytype
@@ -91,3 +91,6 @@ https://towardsdatascience.com/simplify-your-python-code-automating-code-complex
 https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.6535&rep=rep1&type=pdf
 
 
+https://en.wikipedia.org/wiki/No_Silver_Bullet
+
+https://en.wikipedia.org/wiki/SOLID
