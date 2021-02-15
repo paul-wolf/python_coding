@@ -35,6 +35,8 @@ assume a more or less current version like 3.7 or even higher.
    python_guidelines
    context_dependent_variables
    class_design
+   web_frameworks
+   summary
    code_review_checklist
 
 Indices and tables

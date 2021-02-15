@@ -14,10 +14,6 @@ problems. Signs of class design problems:
 
 -  You are having to create too many subclasses
 
--  You are doing a lot of research on exactly how MRO works
-
--  You are overly interested in the awesome capabilities of ``super()``
-
 Classes are for managing state, not behaviour. If you have a class that only has
 behaviour, it should probably be a module with one exception: when you need to
 define an interface. But in general, don’t use a class as a namespace for
@@ -92,14 +88,17 @@ help define common protocols and remove unchanging state from classes.
 Models are declarations of domain objects that have no framework or
 integration dependencies.
 
-SOLID principles:
-=================
+SOLID principles
+----------------
 
 * Single Responsibility Principle (SRP)
 * Open/Closed Principle
 * Liskov’s Substitution Principle (LSP)
 * Interface Segregation Principle (ISP)
 * Dependency Inversion Principle (DIP)
+
+Single Responsibility Principle (SRP)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your class should do one thing. Don’t ask a class to do more than one of
 these things:
@@ -111,14 +110,14 @@ these things:
 * etc (i.e. not a complete list)
 
 Open-Closed Principle
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Open for extension but closed to modification. When you create a class,
 your users should not need to change it to add features or adapt to a
 very specific case. But they should be able to extend that class. 
 
 Liskov Substitution Principle
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sounds fancy, but you already know about this: if you have an abstract
 base class, your subclasses should act like that abstract class would
@@ -126,7 +125,7 @@ act (if it were not abstract). Same for a non-abstract base class and
 children.
 
 Interface Segregation Principle
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It’s harder to do this in Python because Python does not have an
 interface language feature. If you do define an interface via an Abstract
@@ -135,7 +134,7 @@ relevant to them. This hardly applies to Python because a class should do only
 one thing and subclasses should do that one thing in a way that is specialised.
 
 Dependency Inversion Principle (DIP)
-------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "High-level modules should not depend on low-level modules.
 Both should depend on abstractions."
@@ -164,7 +163,7 @@ get complicated very fast, i.e. techncial debt could spiral out of control. You
 might need to live with something that is imperfect. 
 
 Class Design Examples
-=====================
+---------------------
 
 In this highly simplistic example, the subclass is using the superclass
 as a utility for acquiring state:
@@ -256,7 +255,7 @@ need to rename your class later when you find out you want to make your
 Fish class hierarchy derive from “Animal”.
 
 Abstract classes
-================
+----------------
 
 Use the ABC class to create an abstract class. Then use the
 ``@abstractmethod`` decorator for your abstract methods. Make sure you
@@ -295,7 +294,7 @@ properties that are used in the code that is handling these type
 instances.
 
 Class Initialisation
-====================
+--------------------
 
 Remember when you start initialising class instance properties the
 reader will ask herself which one of these stateful properties will be
@@ -327,6 +326,9 @@ level variables. Don’t implement it in a class.
 
 If you are defining constants closely associated with a class, it is
 probably still better to define them in a ``constants.py`` file.
+
+Parameter Consolidation
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Often, you start with a reasonably simple initialisation:
 
@@ -376,6 +378,9 @@ immutable. Python ``dataclasses``
 (https://docs.python.org/3/library/dataclasses.html) are ideal for this,
 or use the Pydantic package (https://pydantic-docs.helpmanual.io/).
 
+Class Factoring
+---------------
+
 Let’s assume we need a class or classes to represent an integration with
 a remote service. How many classes will we have? Let’s assume we need to
 represent getting variations of a data type from the same endpoint.
@@ -398,7 +403,7 @@ provider or utility for subclasses.
 
 Then only the DomainManger gets subclassed for specific kinds of data.
 If you need to parameterise any of these with complex set of data, use a
-Context Parameter class.
+Parameter Consolidation class.
 
 Again, don’t have any ``@staticmethod``\ s. Have only
 ``@classmethod``\ s that access the ``cls`` variable. But most of these
