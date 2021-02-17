@@ -1,6 +1,6 @@
 
-Basics Python Code Guidelines
-=============================
+Basic Python Code Guidelines
+============================
 
 Code reuseability and maintenance is about managing complexity. We don’t
 care how hard machines have to work to understand things as long as
@@ -14,7 +14,6 @@ the reader cognitive load and consequently these questions are hard to
 answer. Recommendations in this article are intended to make scanning
 easier and to progressively implement code that can be managed, changed
 and fixed more easily.
-
 
 Post hoc Refactoring vs Upfront Design Investment
 -------------------------------------------------
