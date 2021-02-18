@@ -1,4 +1,3 @@
-
 Basic Python Code Guidelines
 ============================
 

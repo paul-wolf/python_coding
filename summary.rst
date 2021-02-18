@@ -19,5 +19,3 @@ etc.
 Use the associated code review checklist as a starting point. Modify it
 as you research and gather experience.
 
-`The code review
-checklist. <https://github.com/paul-wolf/python_coding/blob/main/code_review_checklist.md>`__

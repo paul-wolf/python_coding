@@ -73,11 +73,11 @@ user object. You can experiment with calls to ``get_permissions()`` and
 context that doesn’t require a request at all like if you are building a
 command line interface to these functions.
 
-Below we discuss the Context Parameter class pattern. This is a simple
-data class, in the sense of the PSL ``dataclasses`` module. This is not
-context dependent. It is simple to intialise and simple to understand
-the lifecycle of its state. A dataclass or simple class of your own
-construction is easy to create.
+Below we discuss the Parameter Consolidation class pattern. This is a simple
+data class, in the sense of the PSL ``dataclasses`` module. This is not context
+dependent. It is simple to intialise and simple to understand the lifecycle of
+its state. A dataclass or simple class of your own construction is easy to
+create.
 
 When trying out or testing code, it is desirable to be able to load,
 say, a function and pass parameters to it without excessive preparation

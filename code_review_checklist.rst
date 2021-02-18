@@ -165,7 +165,7 @@ Classes
 -  Decorators are not used to replace classes as a design pattern
 
 -  ``__init__()`` does not define too many local variables. Use the
-   Context Parameter pattern instead.
+   Parameter Consolidation pattern instead.
 
 -  A factory class or function at module level is used for complex class
    construction (see Design Patterns) to achieve composition
