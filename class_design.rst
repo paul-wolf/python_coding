@@ -162,67 +162,6 @@ and the high-level domain entities. Trying to apply DIP here can cause things to
 get complicated very fast, i.e. techncial debt could spiral out of control. You
 might need to live with something that is imperfect. 
 
-Class Design Examples
----------------------
-
-In this highly simplistic example, the subclass is using the superclass
-as a utility for acquiring state:
-
-.. code:: python
-
-   import urllib
-   class Fish:
-       def __init__(self, url):
-           self.data = None
-           self.url = url
-           
-       def get_fish_data(self, location):
-           r = requests.get(urllib.parse.urljoin(url, location))
-           self.data = r.json()
-           
-   class Mollusc(Fish):
-       def get_fish_info(self):
-           self.data = self.get_fish_data("mollusc")
-
-We can change this to delegate state acquisition to an object dedicated
-to that function:
-
-.. code:: python
-
-   import urllib
-
-   class Fish:
-       def __init__(self, client, location=None):
-           self.data = None
-           self.client = client
-           self.location = location or "/"
-
-       def get_fish_data(self):
-           self.data = self.client.get_fish_data(self.location)
-       
-   class Mollusc(Fish):
-       def __init__(self, client):
-           super().__init__(client, "mollusc")
-           
-   class FishClient:
-       def __init__(self, url):
-           self.url = url
-
-       def get_fish_data(self, location):
-           r = requests.get(urllib.parse.urljoin(url, location))
-           return r.json()
-           
-   def fish_factory(fish_class=None, client=None):
-       fish_class = fish_class or Fish
-       client = client or FishClient()
-       return fish_class(client)
-       
-
-There is more code in the second one but it prevents duplicating code as
-you add subclasses. It makes it easier to provide custom clients - maybe
-add caching. The principle domain objects, Fish and Mollusc, are easier
-to read and it’s easier to test.
-
 There are many things to consider in building class hierarchies. The
 most important thing is to keep things simple. Secondly, always consider
 when you use a language feature if you are doing it for the class user

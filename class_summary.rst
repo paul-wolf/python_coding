@@ -56,8 +56,6 @@ to decide what methods actually belong to that interface.
 In general, classes should manage state. They are not for namespacing only
 behaviour. Modules already perform that function.
 
-These issues and many more are covered in detail in the guidelines
-documentation:
+If you'd like to see a reasonably full example, there is one here:
 
-<https://python-coding-guidelines.readthedocs.io/>
 
