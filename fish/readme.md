@@ -1,6 +1,10 @@
 Fish Information Example Class Structure
 ========================================
 
+My use case: We are building a web application that retrieves
+information from a remote source of data, We'll use the https://fishbase.ropensci.org/
+as an example, all the code should work. 
+
 You need at least Python 3.6. 
 
 To install the sample project: 
@@ -16,13 +20,11 @@ Run the unrefactored code:
 python original/fishy.py
 ```
 
+Run the refactored code:
+
 ```shell
 python refactored/fishery.py
 ```
-
-My use case: We are building a web application that retrieves
-information from a remote source of data, We'll use the https://fishbase.ropensci.org/
-as an example, all the code should work. 
 
 As usual, our example does not have most real-world code for exception
 handling and many other things. We want to target specific design issues

@@ -170,8 +170,6 @@ or for the reader of the class code. The latter should be prioritised.
 Composition and inheritance as competing design patterns is one of the
 most important things you can learn about how to use classes in Python:
 
-https://realpython.com/inheritance-composition-python/#what-are-inheritance-and-composition
-
 `Brandon Rhodes’ guide to design
 patterns <https://python-patterns.guide/>`__
 
@@ -206,9 +204,6 @@ properties are awkward in Python, but the following works.
    from abc import ABC, abstractmethod
 
    class A(ABC):
-       def __init__(self):
-           pass
-
        @property
        @abstractmethod
        def a(self):
@@ -350,3 +345,4 @@ code, since they will be pure functions and your class will be smaller.
 
 ``self`` and ``cls`` parameter names are conventions, not keywords. Be
 aware if some developer is using a different convention.
+

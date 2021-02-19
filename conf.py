@@ -19,7 +19,7 @@ release = "0.1.0"
 
 templates_path = ["_templates"]
 
-exclude_patterns = ["*.md", ".venv", "_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = ["fish", "*.md", ".venv", "_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "sphinx_rtd_theme"
 

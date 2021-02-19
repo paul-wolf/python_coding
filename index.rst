@@ -38,6 +38,7 @@ assume a more or less current version like 3.7 or even higher.
    class_design
    web_frameworks
    summary
+   class_design_example
    code_review_checklist
 
 Indices and tables
