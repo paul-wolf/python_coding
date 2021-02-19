@@ -4,6 +4,9 @@ Class Design Example
 We take an example of an application that calls a service to get fisheries data.
 The following code should run fine. It will print out common names of species. 
 
+You can find all the source code for this chapter `here. <https://github.com/paul-wolf/python_coding/tree/main/fish>`_
+
+
 .. code:: python
 
     from urllib.parse import urljoin
@@ -106,4 +109,6 @@ Now we can start doing various application tasks. This code is the fastest chang
         )
 
 We do all the mixing and matching of tools here. See the example source code, which you can also run:
+
+`<https://github.com/paul-wolf/python_coding/tree/main/fish>`_
 
