@@ -53,18 +53,18 @@ You can find all the source code for this chapter `here. <https://github.com/pau
         fish = Fish("https://fishbase.ropensci.org/")
         print(fish.get_names_and_notify())
 
-It is a very common way for developers to write the first version of their
+It is a common way for developers to write the first version of a
 class. It has various features that give it the appearance of flexibility:
 
-* It lets the call customise the url, allowing the called service to be changed if required
+* It lets the caller customise the url, allowing the called service to be changed if required
 
 * It has separate methods for getting data vs notifying the UI or formatting that data
 
 * The field in the returned data can be customised easily
 
-However, it is actually not very good: 
+However, there are some big drawbacks: 
 
-* Somehow to write an application, we'd spend a lot of time inside this class, firstly studying it to determine its behaviour and then re-writing to accommodate different behaviours
+* To write an application, we'd spend a lot of time inside this class, firstly studying it to determine its behaviour and then re-writing to accommodate different behaviours
 
 * It has to be modified directly rather than extended to achieve different behaviour. That's bad (see SOLID).
 

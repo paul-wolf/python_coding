@@ -346,3 +346,6 @@ code, since they will be pure functions and your class will be smaller.
 ``self`` and ``cls`` parameter names are conventions, not keywords. Be
 aware if some developer is using a different convention.
 
+See the sample project for more information: 
+
+`<https://github.com/paul-wolf/python_coding/tree/main/fish>`_
