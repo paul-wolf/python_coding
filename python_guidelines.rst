@@ -344,6 +344,38 @@ will result in None.
 
 will result in ``False``.
 
+
+Problems with ``dict.get()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Often, dicts are used to initialise a request or function call. They come as JSON and the
+developer makes use of the ``get()`` method to either get the provided value or
+supply a default. This is often done incorrectly. 
+
+What is the output of the following?
+
+.. code:: python
+
+   data = {"price": None}
+   float(data.get("price", 0)) 
+
+Many developers will say ``0``. If the “price” key is not present, the value of
+this expression is 0.0. All good. But because the call to ``get()`` in this case
+will return ``None``, an exception will be thrown. 
+
+The solution is to parse and validate your input. If you wanted to use a dict
+nevertheless you are probably looking for this:
+
+.. code:: python
+
+   float(order.get("price") or 0)
+
+A better solution would be to parse the incoming data into a dataclass.
+Dataclasses are now provided in Python and the `PyDantic
+<https://pydantic-docs.helpmanual.io/>`__ library provides parsing
+with validation. 
+
+
 Iterating
 ---------
 
@@ -474,28 +506,6 @@ callable instead of an empty list (``[]``):
 
    my_list = list()
 
-
-Stop relying on dicts as parameters
------------------------------------
-
-Stop using dicts as parameters. Use instead ``dataclasses``. The
-``dict.get()`` method is a source of bugs:
-
-.. code:: python
-
-   float(order.get("price", 0)) 
-
-If the “price” key is not present, the value of this expression is 0.0.
-All good. The developer thinks all bases are covered. They are not. When
-the key is present but has a value of ``None`` this will throw an
-exception. The solution is to parse and validate your input.
-`PyDantic <https://pydantic-docs.helpmanual.io/>`__ will parse for you.
-Dataclasses validate. If you wanted to use a dict nevertheless you are
-probably looking for this:
-
-.. code:: python
-
-   float(order.get("price") or 0)
 
 Comments and naming
 -------------------
