@@ -554,7 +554,7 @@ function docstring is something like:
 
    def splice_name(first, last):
        """Return a str representing fullname."""
-       return "f{first} {last}"
+       return f"{first} {last}"
 
 But now you can write:
 
@@ -562,7 +562,7 @@ But now you can write:
 
    def splice_name(first, last) -> str:
        """Combine first and last with space inbetween."""
-       return "f{first} {last}"
+       return f"{first} {last}"
 
 Add more type annotations as necessary. Add a docstring unless it is
 immediately obvious what the function does. But don’t bother identifying
@@ -580,7 +580,7 @@ the function name:
    File:      ~/prj/<ipython-input-28-b0b71e899c5a>
    Type:      function
 
-Likeise if you type ``help(splice_name)``. This is amazingly useful.
+Likewise if you type ``help(splice_name)``. This is amazingly useful.
 
 Profiling code
 --------------
